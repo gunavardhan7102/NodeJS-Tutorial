@@ -9,4 +9,4 @@ customEmit.on('Test',()=>{
 
  customEmit.emit('Test')
 
-// console.log(typeof customEmit);
+// 3:18:16
