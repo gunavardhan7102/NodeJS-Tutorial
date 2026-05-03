@@ -1,12 +1,12 @@
-const _ = require('lodash');
+const EventEmitter = require('events')
 
-const nestedarr = [1,[2,[3,[4]]]];
+const customEmit = new EventEmitter();
 
-const linearr = _.flattenDeep(nestedarr)
+customEmit.on('Test',()=>{
+    console.log('Working');
+    
+})
 
-console.log(linearr);
+ customEmit.emit('Test')
 
-console.log("Guna");
-
-//2:15:14
-
+// console.log(typeof customEmit);
