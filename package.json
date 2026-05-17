@@ -4,8 +4,8 @@
   "description": "",
   "main": "1-intro.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node C:/Users/Dell/Downloads/NodeJS-Tutorial/2-express-tutorial/app.js",
+    "dev": "nodemon C:/Users/Dell/Downloads/NodeJS-Tutorial/2-express-tutorial/app.js"
   },
   "keywords": [],
   "author": "",
