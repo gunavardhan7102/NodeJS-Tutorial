@@ -4,14 +4,15 @@
   "description": "",
   "main": "1-intro.js",
   "scripts": {
-    "start": "node C:/Users/Dell/Downloads/NodeJS-Tutorial/2-express-tutorial/app.js",
-    "dev": "nodemon C:/Users/Dell/Downloads/NodeJS-Tutorial/2-express-tutorial/app.js"
+    "start": "node C:/Users/Dell/Downloads/NodeJS-Tutorial/2-express-tutorial/final/app.js",
+    "dev": "nodemon C:/Users/Dell/Downloads/NodeJS-Tutorial/2-express-tutorial/final/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "express": "^5.2.1",
     "lodash": "^4.18.1"
   },
   "devDependencies": {
