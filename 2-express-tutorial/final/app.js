@@ -36,8 +36,16 @@ app.get('/api/products/:productID/review/:reviewID',(req,res)=>{
 app.get('/api/v1/query',(req,res)=>{
     const {search, limit}=req.query
     const tempData = [...payload]
-    if(search != null){
-res.send(tempData.filter(z=>z.name.startsWith(search)))
+    
+        if(search != null){
+        let testData = tempData.filter(z=>z.name.startsWith(search))
+      
+                if(testData.length === 0){
+res.send('No Data').status(404)
+        }
+        else
+            res.send(testData).status(200)
+
     }
     if(limit != null){
         res.send(payload.slice(0,+(limit)))
@@ -46,6 +54,6 @@ res.send(tempData.filter(z=>z.name.startsWith(search)))
         res.send(tempData)
 })
 
-//06:03:00
+//06:06:43
 
 app.listen(5000)
