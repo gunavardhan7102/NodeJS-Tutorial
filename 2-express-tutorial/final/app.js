@@ -1,59 +1,30 @@
-const express = require('express');
+const express = require('express')
+const logger = require('./logger')
 const app = express();
 
-const payload = require('./data')
+app.use('/api',(req,res,next)=>{
+console.log('Guna');
+next();
+})
 
-// app.use('*hghg',(req,res)=>{
-// res.sendStatus(404).send('Resource not found')
-// })
 
 app.get('/',(req,res)=>{
-    
-  res.send('<h1>Home</h1> <br> <a href = "/api/products/1">Products</a>')
-})
-
-app.get('/api/products/:productID',(req,res)=>{
-    //  console.log('Hi');
-     console.log(`Parameters: ${req.params.productID}`);
-   const data = payload.find(u=>(u.id) === +(req.params.productID))
-    if(data != null){
-        res.json(data).sendStatus(200)
-     } else
-         res.send('Resource not found').sendStatus(404)
-
-})
-
-app.get('/api/products/:productID/review/:reviewID',(req,res)=>{
-    const newData = payload.find(v=>(v.id === +(req.params.productID) && v.id === +(req.params.reviewID)))
-    if(newData != null){
-        res.json(newData)
-    }
-    else
-        res.send('No Resource')
+    console.log(req.method);
+   res.send('Hello')
 })
 
 
-app.get('/api/v1/query',(req,res)=>{
-    const {search, limit}=req.query
-    const tempData = [...payload]
-    
-        if(search != null){
-        let testData = tempData.filter(z=>z.name.startsWith(search))
-      
-                if(testData.length === 0){
-res.send('No Data').status(404)
-        }
-        else
-            res.send(testData).status(200)
-
-    }
-    if(limit != null){
-        res.send(payload.slice(0,+(limit)))
-    }
-    else
-        res.send(tempData)
+app.get('/api/test',(req,res)=>{
+res.send('New Hello')
 })
 
-//06:06:43
 
-app.listen(5000)
+app.get('/oldmethod', logger, (req,res)=>{
+    console.log('Second Hey');
+    res.send('Hey')
+})
+
+
+app.listen(5000,()=>{
+    console.log('Running')
+})
