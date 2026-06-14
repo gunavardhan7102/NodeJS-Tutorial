@@ -8,9 +8,9 @@ const payload = require('./data')
 // })
 
 app.get('/',(req,res)=>{
-    
-  res.send('<h1>Home</h1> <br> <a href = "/api/products/1">Products</a>')
+     res.send('<h1>Home</h1> <br> <a href = "/api/products/1">Products</a>')
 })
+
 
 app.get('/api/products/:productID',(req,res)=>{
     //  console.log('Hi');
@@ -20,8 +20,8 @@ app.get('/api/products/:productID',(req,res)=>{
         res.json(data).sendStatus(200)
      } else
          res.send('Resource not found').sendStatus(404)
-
 })
+
 
 app.get('/api/products/:productID/review/:reviewID',(req,res)=>{
     const newData = payload.find(v=>(v.id === +(req.params.productID) && v.id === +(req.params.reviewID)))
@@ -36,10 +36,8 @@ app.get('/api/products/:productID/review/:reviewID',(req,res)=>{
 app.get('/api/v1/query',(req,res)=>{
     const {search, limit}=req.query
     const tempData = [...payload]
-    
         if(search != null){
         let testData = tempData.filter(z=>z.name.startsWith(search))
-      
                 if(testData.length === 0){
 res.status(404).json({
     "info":"No data found"
@@ -47,7 +45,6 @@ res.status(404).json({
         }
         else
             res.send(testData).status(200)
-
     }
     if(limit != null){
         res.send(payload.slice(0,+(limit)))

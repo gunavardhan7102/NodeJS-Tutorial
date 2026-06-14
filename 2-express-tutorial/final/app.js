@@ -1,33 +1,13 @@
-const express = require('express')
-const logger = require('./logger')
+const express = require('express');
 const app = express();
+const data = require('./data')
 
-app.use('/api',(req,res,next)=>{
-console.log('Guna');
-next();
+
+
+
+app.get('/data',(req,res)=>{
+    res.json(data)
 })
 
-
-app.get('/',(req,res)=>{
-    console.log(req.method);
-   res.send('Hello')
-})
-
-
-app.get('/api/test',(req,res)=>{
-res.send('New Hello')
-})
-
-
-app.get('/oldmethod', logger, (req,res)=>{
-    console.log('Second Hey');
-    res.send('Hey')
-})
-
-
-app.listen(5000,()=>{
-    console.log('Running')
-})
-
-
-//06:29:36
+//06:49:04
+app.listen(5000)
