@@ -5,8 +5,8 @@
   "description": "",
   "main": "1-intro.js",
   "scripts": {
-    "start": "node ./2-express-tutorial/final/app.js",
-    "dev": "nodemon ./2-express-tutorial/final/app.js"
+    "start": "node ./3-TaskManager/starter/app.js",
+    "dev": "nodemon ./3-TaskManager/starter/app.js"
   },
   "keywords": [],
   "author": "",
