@@ -3,16 +3,18 @@ const app = express();
 const port = 3000
 const tasks = require('./routes/tasks')
 const connectdb = require('./db/connect')
+require('dotenv').config()
 
 //middleware
 
+app.use(express.static('./3-TaskManager/starter/public'))
 app.use(express.json())
 
 //routes
 
 const start = async() => {
     try{
-await connectdb();
+await connectdb(process.env.connectionString);
 app.listen(port,console.log('Listening to the server...'))
     }
     catch(err){
@@ -20,7 +22,9 @@ console.log(err);
     }
 }
 
-//01:10:42
+//02:26:00
+
+start()
 
 app.use('/api/v1/tasks',tasks)
 
