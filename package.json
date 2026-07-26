@@ -5,8 +5,9 @@
   "description": "",
   "main": "1-intro.js",
   "scripts": {
-    "start": "node ./3-TaskManager/starter/app.js",
-    "dev": "nodemon ./3-TaskManager/starter/app.js"
+    "start": "node ./4-store-api/starter/app.js",
+    "dev": "nodemon ./4-store-api/starter/app.js",
+    "test": "node ./4-store-api/starter/populate.js"
   },
   "keywords": [],
   "author": "",
