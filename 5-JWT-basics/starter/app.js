@@ -5,15 +5,14 @@ const errorhandler = require('./middleware/error-handler')
 const {notfound} = require('./middleware/not-found')
 const port = process.env.PORT || 3000
 const db = require('./db/connect')
-// const products = require('./controllers/products')
-const route = require('./routes/products')
+const routers = require('./routes/main')
 
+
+app.use(express.static('./5-JWT-basics/starter/public'))
 app.use(express.json())
-app.use('/api/v1/products',route)
+app.use('/api/v1', routers)
 
-app.get('/',(req,res)=>{
-res.send('<h1>Store API</h1>')
-})
+
 
 const start = async () => {
     try{
@@ -32,5 +31,5 @@ app.use(notfound)
 app.use(errorhandler)
 
 
-
+//05:30:00
 
