@@ -1,5 +1,7 @@
+const {StatusCodes} = require('http-status-codes')
+
 const errorHandlerMiddleware = (err,req,res,next) => {
-    res.status(404).send(err.message)
+    res.status(StatusCodes.NOT_FOUND).send(err.message)
 }
 
 module.exports = errorHandlerMiddleware

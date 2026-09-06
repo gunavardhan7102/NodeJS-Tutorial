@@ -5,8 +5,8 @@
   "description": "",
   "main": "1-intro.js",
   "scripts": {
-    "start": "node ./5-JWT-basics/starter/app.js",
-    "dev": "nodemon ./5-JWT-basics/starter/app.js",
+    "start": "node ./6-JobsAPI/starter/app.js",
+    "dev": "nodemon ./6-JobsAPI/starter/app.js",
     "test": "node ./4-store-api/starter/populate.js"
   },
   "keywords": [],

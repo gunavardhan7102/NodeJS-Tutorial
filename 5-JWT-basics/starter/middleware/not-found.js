@@ -1,5 +1,7 @@
+const {StatusCodes} = require('http-status-codes')
+
 const notfound = (req,res) => {
-    res.send('Resource not found').status(404)
+    res.send('Resource not found').status(StatusCodes.NOT_FOUND)
 }
 
 const asyncWrapper = (fn) => {
