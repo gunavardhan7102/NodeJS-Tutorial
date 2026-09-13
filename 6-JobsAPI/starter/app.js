@@ -7,11 +7,12 @@ const notFound = require('./middleware/not-found')
 const auth = require('./routes/auth')
 const jobs = require('./routes/jobs')
 const connect = require('./db/connect')
+const authmiddle = require('./middleware/authentication')
 
 app.use(express.json())
 
 app.use('/api/v1/auth', auth)
-app.use('/api/v1/jobs', jobs)
+app.use('/api/v1/jobs', authmiddle,jobs)
 
 app.get('/',(req,res)=>{
   res.send('Jobs API')
@@ -53,4 +54,5 @@ app.use(errorHandler)
 
 
 
-//06:55:00
+//08:04:00
+
