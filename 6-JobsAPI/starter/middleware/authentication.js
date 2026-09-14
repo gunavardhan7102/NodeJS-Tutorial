@@ -12,6 +12,7 @@ throw new unauthenticated('Authentication Invalid')
 const token =  authorization.split(' ')[1]
 try{
 const payload =  jwt.verify(token,process.env.jwtSecret)
+req.user = {userId:payload.id,name:payload.name}
 }
 catch(e){
 // throw new unauthenticated(e)

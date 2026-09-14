@@ -38,7 +38,7 @@ userSchema.methods.getName = function(){
 }
 
 userSchema.methods.createJWT = function(){
-return jwt.sign({'name':this.name},process.env.jwtSecret,{expiresIn:'30d'})
+return jwt.sign({'id':this._id,'name':this.name},process.env.jwtSecret,{expiresIn:'30d'})
 }
 
 userSchema.methods.isMatch = function(enteredPwd){
