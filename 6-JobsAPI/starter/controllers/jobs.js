@@ -19,12 +19,26 @@ const newjob = await Job.create(req.body)
 res.status(StatusCodes.CREATED).json({newjob})
 }
 
-const updateJob = (req,res) => {
-res.send('Update Job')
+const updateJob = async(req,res) => {
+    const {id} = req.params
+    const{company, position} = req.body
+    if(company === '' || position === ''){
+        throw new Error('Company and Position are required')
+    }
+const oldJob = await Job.findOneAndUpdate({_id:id, createdBy:req.user.userId},req.body,{
+    new:true,
+    runValidators: true
+})
+if(!oldJob){
+    throw new Error('Job does not exists')
+}
+res.status(StatusCodes.OK).json({oldJob})
 }
 
-const deleteJob = (req,res) => {
-res.send('Delete Job')
+const deleteJob = async(req,res) => {
+    const {id} = req.params
+ await Job.findOneAndDelete({_id:id, createdBy:req.user.userId})
+res.status(StatusCodes.OK).send('Deleted Succesfully')
 }
 
 

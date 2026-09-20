@@ -16,7 +16,7 @@ res.status(StatusCodes.CREATED).json({'name':response.getName(),'token':token})
 const login = async(req,res) => {
 const{email,password} = req.body
 if(!email || !password){
-    throw new badrequest('Please provide valid username and password')
+    throw new Error('Please provide valid username and password')
 }
 const loggedinUser = await User.findOne({email})
 if(!loggedinUser){
