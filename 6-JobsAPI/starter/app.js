@@ -11,9 +11,17 @@ const authmiddle = require('./middleware/authentication')
 const helmet = require('helmet')
 const cors = require('cors')
 const xss = require('xss')
-const ratelimit = require('ratelimit')
+const ratelimit = require('express-rate-limit')
 
 app.use(express.json())
+app.use(helmet())
+app.use(cors())
+app.use(xss())
+app.use(ratelimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 15,
+  message: "Too many requests"
+}))
 
 app.use('/api/v1/auth', auth)
 app.use('/api/v1/jobs', authmiddle,jobs)
