@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const {StatusCodes} = require('http-status-codes')
 const {badrequest,unAuthenticated} = require('../errors')
-require('dotenv').config()
+
 
 const register = async(req,res) => {
     const {name, email, password} = req.body

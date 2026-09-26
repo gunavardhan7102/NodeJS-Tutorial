@@ -10,13 +10,26 @@ const connect = require('./db/connect')
 const authmiddle = require('./middleware/authentication')
 const helmet = require('helmet')
 const cors = require('cors')
-const xss = require('xss')
+// const xss = require('xss')
 const ratelimit = require('express-rate-limit')
+const fs = require('fs')
 
-app.use(express.json())
-app.use(helmet())
+const swaggerUi = require("swagger-ui-express")
+const yaml = require("yaml")
+const file = fs.readFileSync('./swagger.yaml','utf-8')
+const swaggerdoc = yaml.parse(file)
+
+
+app.use(express.json()) //To parse the json data
+app.use(helmet()) // To add various security headers in the response headers.
 app.use(cors())
-app.use(xss())
+
+// app.use(cors({
+//     origin: 'https://yourfrontend.com'
+// }));
+
+
+// app.use(xss())
 app.use(ratelimit({
   windowMs: 15 * 60 * 1000,
   limit: 15,
@@ -43,7 +56,16 @@ const start = async() => {
     }
 }
 
+
+
+
+app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerdoc,{explorer:true}))
+ //The explorer is to enable search
+
+
 start()
+
+
 
 app.use(notFound)
 app.use(errorHandler)
@@ -54,17 +76,5 @@ app.use(errorHandler)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//09:25:00
+//09:36:00
 
